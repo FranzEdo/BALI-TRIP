@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShinobeFranz WEB</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan file CSS -->
+    <style>
+        /* Tambahan CSS untuk tombol yang mengelilingi lingkaran */
+        .circle-frame {
+            width: 520px; /* Lebar frame lingkaran */
+            height: 520px; /* Tinggi frame lingkaran */
+            border: 10px solid rgba(255, 255, 255, 0.5); /* Border lingkaran */
+            border-radius: 50%; /* Membuat frame berbentuk lingkaran */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* Posisi relatif untuk menempatkan tombol */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Bayangan lingkaran */
+        }
+
+        .circle-buttons {
+            position: absolute; /* Posisi absolut untuk tombol */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-buttons a {
+            position: absolute; /* Posisi absolut untuk setiap tombol */
+            width: 50px; /* Lebar tombol */
+            height: 50px; /* Tinggi tombol */
+            background-color: rgba(243, 8, 8, 0.874); /* Warna latar belakang tombol */
+            color: white; /* Warna teks tombol */
+            border-radius: 50%; /* Membuat tombol berbentuk bulat */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Menghilangkan garis bawah */
+            transition: transform 0.3s; /* Transisi untuk efek hover */
+        }
+
+        /* Mengatur posisi tombol dalam lingkaran */
+        .circle-buttons a:nth-child(1) { transform: translate(0, -260px); }
+        .circle-buttons a:nth-child(2) { transform: translate(184px, -184px); }
+        .circle-buttons a:nth-child(3) { transform: translate(260px, 0); }
+        .circle-buttons a:nth-child(4) { transform: translate(184px, 184px); }
+        .circle-buttons a:nth-child(5) { transform: translate(0, 260px); }
+        .circle-buttons a:nth-child(6) { transform: translate(-184px, 184px); }
+        .circle-buttons a:nth-child(7) { transform: translate(-260px, 0); }
+        .circle-buttons a:nth-child(8) { transform: translate(-184px, -184px); }
+
+        .circle-buttons a:hover {
+            transform: scale(1.1); /* Efek zoom saat hover */
+        }
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <div class="main-content">
+            <div class="left-section">
+                <h1>PERSONAL WEB</h1>
+                <p>#ShinobeFranz</p>
+            </div>
+            <div class="center-section">
+                <div class="circle-frame">
+                    <img src="SF Logo.png" alt="Web Designer" />
+                    <div class="circle-buttons">
+                        <a href="Firstday.html">Bali Dec 30th 24</a>
+                        <a href="Secondday.html">Bali Dec 31th 24</a>
+                        <a href="Thirdday.html">Bali Jan 01st 25</a>
+                        <a href="Fourthday.html">Bromo Jan 02nd 25</a>
+                        <a href="Fifthday.html">Jogja Jan 03rd 25</a>
+                        <a href="Video.html">Video</a>
+                        <a href="About.html">About</a>
+                        <a href="Manual.html">User Manual</a>
+                    </div>
+                </div>
+            </div>
+            <div class="right-section">
+                <div class="info">
+                    <h2>Bali-Bromo-Jogja Trip</h2>
+                    <p>Dec 28th 2024 till Jan 04th 2025</p>
+                </div>
+            </div>
+        </div>
+        <div class="social-links">
+            <a href="https://www.instagram.com/franzedo254/"><i class="fab fa-instagram"></i></a>
+            <a href="https://web.facebook.com/FranzEDO"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/FranzEdo254"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.tiktok.com/@franzdsaviour"><i class="fab fa-tiktok"></i></a>
+        </div>
+    </div>
+</body>
+</html>

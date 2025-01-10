@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BALI TRIP</title>
+
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <!-- Our CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('SF Background.png') no-repeat center center fixed; /* Ganti dengan path gambar Anda */
+            background-size: cover; /* Pastikan gambar menutupi seluruh area */
+            display: flex; /* Menggunakan flexbox untuk posisi konten */
+            justify-content: center; /* Memusatkan konten secara horizontal */
+            align-items: center; /* Memusatkan konten secara vertikal */
+            height: 100vh; /* Memastikan body mengambil seluruh tinggi viewport */
+            margin: 0; /* Menghapus margin default */
+            color: #ffffff; /* Warna teks default */
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 30px;
+            background-color: rgba(15, 15, 16, 0.85); /* Transparansi untuk efek overlay */
+            border-radius: 50%; /* Membuat kontainer berbentuk lingkaran */
+            overflow: hidden; /* Memastikan konten tidak melampaui batas lingkaran */
+            height: 520px; /* Tinggi kontainer */
+            width: 520px; /* Lebar kontainer */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Efek bayangan */
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin: 0; /* Menghapus margin default */
+            text-align: center; /* Memusatkan teks */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin: 10px 0; /* Jarak atas dan bawah */
+            text-align: center; /* Memusatkan teks */
+        }
+
+        .circle-frame {
+            width: 520px; /* Lebar frame lingkaran */
+            height: 520px; /* Tinggi frame lingkaran */
+            border: 10px solid rgba(255, 255, 255, 0.5); /* Border lingkaran */
+            border-radius: 50%; /* Membuat frame berbentuk lingkaran */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* Posisi relatif untuk menempatkan tombol */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Bayangan lingkaran */
+        }
+
+        .circle-buttons {
+            position: absolute; /* Posisi absolut untuk tombol */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-buttons a {
+            position: absolute; /* Posisi absolut untuk setiap tombol */
+            width: 50px; /* Lebar tombol */
+            height: 50px; /* Tinggi tombol */
+            background-color: rgba(243, 8, 8, 0.874); /* Warna latar belakang tombol */
+            color: white; /* Warna teks tombol */
+            border-radius: 50%; /* Membuat tombol berbentuk bulat */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Menghilangkan garis bawah */
+            transition: transform 0.3s; /* Transisi untuk efek hover */
+        }
+
+        /* Mengatur posisi tombol dalam lingkaran */
+        .circle-buttons a:nth-child(1) { transform: translate(0, -260px); }
+        .circle-buttons a:nth-child(2) { transform: translate(184px, -184px); }
+        .circle-buttons a:nth-child(3) { transform: translate(260px, 0); }
+        .circle-buttons a:nth-child(4) { transform: translate(184px, 184px); }
+        .circle-buttons a:nth-child(5) { transform: translate(0, 260px); }
+        .circle-buttons a:nth-child(6) { transform: translate(-184px, 184px); }
+        .circle-buttons a:nth-child(7) { transform: translate(-260px, 0); }
+        .circle-buttons a:nth-child(8) { transform: translate(-184px, -184px); }
+
+        .circle-buttons a:hover {
+            transform: scale(1.1); /* Efek zoom saat hover */
+        }
+
+        .slider {
+            width: 90%; /* Memastikan slider tidak melebihi kontainer */
+            height: 200px; /* Tinggi tetap untuk slider */
+            margin-top: 20px; /* Jarak atas */
+        }
+
+        .slider .slick-slide {
+            display: flex;
+            justify-content: center; /* Center the image in the slide */
+            align-items: center; /* Center the image in the slide */
+        }
+
+        .slider .slick-slide img {
+            width: 200px; /* Lebar gambar 200px */
+            height: 200px; /* Tinggi gambar 200px */
+            object-fit: cover; /* Memastikan gambar terpotong secara proporsional */
+            border-radius: 8px; /* Sudut tumpul untuk gambar */
+            cursor: pointer; /* Mengubah kursor saat hover di atas gambar */
+            transition: transform 0.3s; /* Efek transisi saat hover */
+        }
+
+        .slider .slick-slide img:hover {
+            transform: scale(1.05); /* Efek zoom saat hover */
+        }
+
+        /* Gambar besar yang akan ditampilkan saat gambar kecil diklik */
+        .large-image {
+            display: none; /* Awalnya tidak ditampilkan */
+            position: fixed; /* Posisi tetap */
+            top: 50%; /* Memposisikan di tengah */
+            left: 50%; /* Memposisikan di tengah */
+            transform: translate(-50%, -50%); /* Memindahkan gambar ke tengah */
+            background-color: rgba(0, 0, 0, 0.8); /* Latar belakang gelap */
+            border-radius: 8px; /* Sudut tumpul untuk gambar besar */
+            z-index: 1000; /* Mendapatkan prioritas di atas konten lain */
+            padding: 20px; /* Jarak di sekitar gambar besar */
+        }
+
+        .large-image img {
+            max-width: 100%; /* Lebar maksimum 100% dari kontainer */
+            max-height: 100%; /* Tinggi maksimum 100% dari kontainer */
+            object-fit: contain; /* Memastikan gambar terpotong secara proporsional */
+            border-radius: 8px; /* Sudut tumpul untuk gambar besar */
+        }
+
+        /* Button untuk navigasi slider */
+        .slick-prev, .slick-next {
+            width: 50px;
+            height: 50px;
+            z-index: 1;
+        }
+        .slick-prev {
+            left: 10px;
+        }
+        .slick-next {
+            right: 10px;
+        }
+        .slick-prev:before, 
+        .slick-next:before {
+            font-size: 40px;
+            color: #f71010; /* Mengubah warna panah */
+        }
+
+      /* Mengatur tampilan titik navigasi */
+.slick-dots {
+    bottom: 10px; /* Jarak bawah */
+    position: relative; /* Memastikan posisi titik relatif terhadap kontainer */
+    z-index: 1; /* Memastikan titik berada di lapisan atas */
+}
+
+.slick-dots li {
+    pointer-events: auto; /* Memungkinkan interaksi pada elemen li */
+}
+
+.slick-dots li button:before {
+    font-size: 0; /* Menghilangkan tampilan titik */
+    color: transparent; /* Mengubah warna titik menjadi transparan */
+    opacity: 0; /* Membuat titik tidak terlihat */
+}
+
+.slick-dots li.slick-active button:before {
+    color: transparent; /* Warna titik yang aktif menjadi transparan */
+    opacity: 0; /* Membuat titik aktif tidak terlihat */
+}
+
+/* Mengatur gambar agar dapat diklik dan memiliki lapisan lebih tinggi */
+.image-container {
+    position: relative; /* Memastikan posisi kontainer gambar relatif */
+    z-index: 2; /* Memastikan gambar berada di atas titik */
+}
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>BALI DEC 30th 2024</h1>
+        <p>Tanah Lot-Danau Bedugul</p>
+        <div class="circle-buttons">
+            <a href="index.html">HOME</a>
+        </div>
+        <div class="image-container" id="image-container"></div>
+        <div class="slider">
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_1.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_2.jpg" alt="Image 2">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_3.jpg" alt="Image 3">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_4.jpg" alt="Image 4">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_5.jpg" alt="Image 5">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_6.jpg" alt="Image 6">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_7.jpg" alt="Image 7">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_8.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_9.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_10.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_11.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_12.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_13.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_14.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_15.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_16.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_17.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_18.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_19.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_20.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_21.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_22.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_23.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_24.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_25.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_26.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_27.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_28.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_29.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_30.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_31.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_32.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_33.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_34.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_35.jpg" alt="Image 2">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_36.jpg" alt="Image 3">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_37.jpg" alt="Image 4">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_38.jpg" alt="Image 5">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_39.jpg" alt="Image 6">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_40.jpg" alt="Image 7">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_41.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_42.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_43.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_44.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_45.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_46.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_47.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_48.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_49.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_50.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_51.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_52.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_53.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_54.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_55.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_56.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_57.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_58.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_59.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_60.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_61.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_62.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_63.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_64.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_65.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_66.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_67.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_68.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_69.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_70.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_71.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_72.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_73.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_74.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_75.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_76.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_77.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_78.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_79.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_80.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_81.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_82.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_83.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_84.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_85.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_86.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_87.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_88.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_89.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_90.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_91.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_92.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_93.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_94.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_95.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_96.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_97.jpg" alt="Image 1">
+                </a>            
+            </div>
+            <div>
+                <a href="#">
+                    <img src="GAMBAR/DEC30th2024/image_98.jpg" alt="Image 1">
+                </a>            
+            </div>
+
+
+            <!-- Tambahkan lebih banyak gambar sesuai kebutuhan -->
+        </div>
+
+        <!-- Gambar besar yang akan ditampilkan saat gambar kecil diklik -->
+        <div class="large-image" id="largeImageContainer">
+            <img id="largeImage" src="" alt="Large Image">
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Slick JS -->    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <!-- Our Script -->
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                autoplay: true,
+                autoplaySpeed: 2500,
+                dots: true,
+                arrows: true // Menampilkan tombol navigasi
+            });
+
+            // Event handler untuk mengubah gambar besar saat gambar kecil diklik
+            $('.slider img').click(function() {
+                var imgSrc = $(this).attr('src'); // Mendapatkan src gambar yang diklik
+                $('#largeImage').attr('src', imgSrc); // Mengatur src gambar besar
+                $('#largeImageContainer').fadeIn(); // Menampilkan gambar besar
+            });
+
+            // Menyembunyikan gambar besar saat diklik
+            $('#largeImageContainer').click(function() {
+                $(this).fadeOut(); // Menyembunyikan gambar besar
+            });
+        });
+    </script>
+
+</body>
+</html>

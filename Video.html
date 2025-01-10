@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIDEO FILE</title>
+
+    <!-- Slick CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+
+    <!-- Our CSS -->
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: url('SF background.png') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 30px;
+            background-color: rgba(15, 15, 16, 0.85);
+            border-radius: 50%;
+            overflow: hidden;
+            height: 520px;
+            width: 520px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            position: relative; /* Tambahkan posisi relatif untuk tombol */
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        .circle-buttons {
+            position: absolute; /* Posisi tombol */
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .circle-buttons a {
+            position: absolute; /* Posisi untuk setiap tombol */
+            width: 50px; /* Lebar tombol */
+            height: 50px; /* Tinggi tombol */
+            background-color: rgba(243, 8, 8, 0.874); /* Warna latar belakang tombol */
+            color: white; /* Warna teks tombol */
+            border-radius: 50%; /* Bentuk bulat */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Menghilangkan garis bawah */
+            transition: transform 0.3s; /* Transisi untuk efek hover */
+        }
+
+        /* Mengatur posisi tombol dalam lingkaran */
+        .circle-buttons a:nth-child(1) { transform: translate(0, -260px); }
+        .circle-buttons a:nth-child(2) { transform: translate(184px, -184px); }
+        .circle-buttons a:nth-child(3) { transform: translate(260px, 0); }
+        .circle-buttons a:nth-child(4) { transform: translate(184px, 184px); }
+        .circle-buttons a:nth-child(5) { transform: translate(0, 260px); }
+        .circle-buttons a:nth-child(6) { transform: translate(-184px, 184px); }
+        .circle-buttons a:nth-child(7) { transform: translate(-260px, 0); }
+        .circle-buttons a:nth-child(8) { transform: translate(-184px, -184px); }
+
+        .circle-buttons a:hover {
+            transform: scale(1.1); /* Efek zoom saat hover */
+        }
+
+        .slider {
+            width: 90%;
+            height: 200px;
+            margin-top: 20px;
+        }
+
+        .slider .slick-slide video {
+            width: 200px; /* Ukuran preview video */
+            height: 200px; /* Ukuran preview video */
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .slider .slick-slide video:hover {
+            transform: scale(1.05);
+        }
+
+        .large-video {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 8px;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .large-video video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        /* Mengatur tampilan titik navigasi */
+.slick-dots {
+    bottom: 10px; /* Jarak bawah */
+    position: relative; /* Memastikan posisi titik relatif terhadap kontainer */
+    z-index: 1; /* Memastikan titik berada di lapisan atas */
+}
+
+.slick-dots li {
+    pointer-events: auto; /* Memungkinkan interaksi pada elemen li */
+}
+
+.slick-dots li button:before {
+    font-size: 0; /* Menghilangkan tampilan titik */
+    color: transparent; /* Mengubah warna titik menjadi transparan */
+    opacity: 0; /* Membuat titik tidak terlihat */
+}
+
+.slick-dots li.slick-active button:before {
+    color: transparent; /* Warna titik yang aktif menjadi transparan */
+    opacity: 0; /* Membuat titik aktif tidak terlihat */
+}
+    /* Mengatur gambar agar dapat diklik dan memiliki lapisan lebih tinggi */
+.video-container {
+    position: relative; /* Memastikan posisi kontainer gambar relatif */
+    z-index: 2; /* Memastikan gambar berada di atas titik */
+}
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Kumpulan Video TRIP</h1>
+        <p>BALI-BROMO-JOGJA</p>
+        <div class="circle-buttons">
+            <a href="index.html">HOME</a>
+        </div>
+        <div class="slider">
+            <div>
+                <video src="VIDEO/Video01.mp4" alt="Video 1" data-video-src="VIDEO/Video01.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video02.mp4" alt="Video 2" data-video-src="VIDEO/Video02.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video03.mp4" alt="Video 3" data-video-src="VIDEO/Video03.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video04.mp4" alt="Video 4" data-video-src="VIDEO/Video04.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video05.mp4" alt="Video 5" data-video-src="VIDEO/Video05.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video06.mp4" alt="Video 6" data-video-src="VIDEO/Video06.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video07.mp4" alt="Video 7" data-video-src="VIDEO/Video07.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video08.mp4" alt="Video 8" data-video-src="VIDEO/Video08.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video09.mp4" alt="Video 9" data-video-src="VIDEO/Video09.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video10.mp4" alt="Video 10" data-video-src="VIDEO/Video10.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video11.mp4" alt="Video 11" data-video-src="VIDEO/Video11.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video12.mp4" alt="Video 12" data-video-src="VIDEO/Video12.mp4" muted loop></video>
+            </div>
+            <div>
+                <video src="VIDEO/Video13.mp4" alt="Video 13" data-video-src="VIDEO/Video13.mp4" muted loop></video>
+            </div>
+            
+        </div>
+
+        <div class="large-video" id="largeVideoContainer">
+            <video id="largeVideo" controls>
+                <source src="" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+    </div>
+
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.slider').slick({
+                autoplay: true,
+                autoplaySpeed: 2500,
+                dots: true,
+                arrows: true
+            });
+
+            $('.slider video').click(function() {
+                var videoSrc = $(this).data('video-src');
+                var video = $('#largeVideo')[0];
+
+                // Jika video sedang diputar, berhentikan sebelum memuat video baru
+                if (!video.paused) {
+                    video.pause(); // Stop the current video
+                    $('#largeVideoContainer').fadeOut(); // Menyembunyikan container
+                } else {
+                    // Memuat dan memutar video baru
+                    $('#largeVideo source').attr('src', videoSrc);
+                    $('#largeVideo')[0].load();
+                    $('#largeVideoContainer').fadeIn();
+                    video.play(); // Memulai pemutaran video baru
+                }
+            });
+
+            $('#largeVideoContainer').click(function() {
+                var video = $('#largeVideo')[0];
+                video.pause(); // Menghentikan video saat container diklik
+                $(this).fadeOut(); // Menyembunyikan container
+            });
+        });
+    </script>
+
+</body>
+</html>
