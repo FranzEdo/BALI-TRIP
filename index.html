@@ -6,23 +6,130 @@
     <title>ShinobeFranz WEB</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css"> <!-- Menghubungkan file CSS -->
     <style>
-        /* Tambahan CSS untuk tombol yang mengelilingi lingkaran */
-        .circle-frame {
-            width: 520px; /* Lebar frame lingkaran */
-            height: 520px; /* Tinggi frame lingkaran */
-            border: 10px solid rgba(255, 255, 255, 0.5); /* Border lingkaran */
-            border-radius: 50%; /* Membuat frame berbentuk lingkaran */
+        body {
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #1a1a1a;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #1a1a1a, #333);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .navbar {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            position: absolute;
+            top: 0;
+        }
+
+        .navbar .logo {
+            font-size: 2rem; /* Responsive font size */
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            padding: 10px;
+            border-radius: 2px;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+        }
+
+        .navbar a:hover {
+            background-color: rgba(243, 8, 8, 0.874);
+            transform: scale(1.1) rotate(3deg);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .main-content {
             display: flex;
             align-items: center;
             justify-content: center;
-            position: relative; /* Posisi relatif untuk menempatkan tombol */
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Bayangan lingkaran */
+            width: 100%;
+            height: 100%;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .left-section, .right-section {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .left-section h1 {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            font-size: 2.5rem; /* Responsive font size */
+            margin: 0;
+            text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5);
+        }
+
+        .left-section p {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            margin: 0;
+            font-size: 1rem; /* Responsive font size */
+        }
+
+        .center-section {
+            flex: 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .circle-frame {
+            width: 40vw; /* Responsive width */
+            height: 40vw; /* Responsive height */
+            max-width: 520px; /* Max size */
+            max-height: 520px; /* Max size */
+            border: 10px solid rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
 
         .circle-buttons {
-            position: absolute; /* Posisi absolut untuk tombol */
+            position: absolute;
             width: 100%;
             height: 100%;
             display: flex;
@@ -31,36 +138,92 @@
         }
 
         .circle-buttons a {
-            position: absolute; /* Posisi absolut untuk setiap tombol */
-            width: 50px; /* Lebar tombol */
-            height: 50px; /* Tinggi tombol */
-            background-color: rgba(243, 8, 8, 0.874); /* Warna latar belakang tombol */
-            color: white; /* Warna teks tombol */
-            border-radius: 50%; /* Membuat tombol berbentuk bulat */
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: rgba(243, 8, 8, 0.874);
+            color: white;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-decoration: none; /* Menghilangkan garis bawah */
-            transition: transform 0.3s; /* Transisi untuk efek hover */
+            text-decoration: none;
         }
 
         /* Mengatur posisi tombol dalam lingkaran */
-        .circle-buttons a:nth-child(1) { transform: translate(0, -260px); }
-        .circle-buttons a:nth-child(2) { transform: translate(184px, -184px); }
-        .circle-buttons a:nth-child(3) { transform: translate(260px, 0); }
-        .circle-buttons a:nth-child(4) { transform: translate(184px, 184px); }
-        .circle-buttons a:nth-child(5) { transform: translate(0, 260px); }
-        .circle-buttons a:nth-child(6) { transform: translate(-184px, 184px); }
-        .circle-buttons a:nth-child(7) { transform: translate(-260px, 0); }
-        .circle-buttons a:nth-child(8) { transform: translate(-184px, -184px); }
+        .circle-buttons a:nth-child(1) { top: 5%; left: 50%; transform: translate(-50%, -50%); }
+        .circle-buttons a:nth-child(2) { top: 20%; left: 80%; transform: translate(-50%, -50%); }
+        .circle-buttons a:nth-child(3) { top: 50%; left: 95%; transform: translate(-50%, -50%); }
+        .circle-buttons a:nth-child(4) { top: 80%; left: 80%; transform: translate(-50%, -50%); }
+        .circle-buttons a:nth-child(5) { top: 95%; left: 50%; transform: translate(-50%, -50%); }
+        .circle-buttons a:nth-child(6) { top: 80%; left: 20%; transform: translate(-50%, -50%); }
+        .circle-buttons a:nth-child(7) { top: 50%; left: 5%; transform: translate(-50%, -50%); }
+        .circle-buttons a:nth-child(8) { top: 20%; left: 20%; transform: translate(-50%, -50%); }
 
-        .circle-buttons a:hover {
-            transform: scale(1.1); /* Efek zoom saat hover */
+        .right-section .info {
+            text-align: left;
+        }
+
+        .right-section .info h2 {
+            font-size: 1.5rem; /* Responsive font size */
+        }
+
+        .right-section .info p {
+            font-size: 0.875rem; /* Responsive font size */
+        }
+
+        .social-links {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+        }
+
+        .social-links a {
+            color: rgb(22, 21, 23);
+            margin: 0 10px;
+            font-size: 1.5rem; /* Responsive font size */
+        }
+
+        @media (max-width: 768px) {
+            .navbar .logo {
+                font-size: 1.5rem; /* Smaller logo size for mobile */
+            }
+            .left-section h1 {
+                font-size: 2rem; /* Smaller heading */
+            }
+            .left-section p {
+                font-size: 0.875rem; /* Smaller paragraph */
+            }
+            .right-section .info h2 {
+                font-size: 1.25rem; /* Smaller heading */
+            }
+            .right-section .info p {
+                font-size: 0.75rem; /* Smaller paragraph */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar .logo {
+                font-size: 1.2rem; /* Even smaller for very small screens */
+            }
+            .left-section h1 {
+                font-size: 1.5rem; /* Smaller heading for mobile */
+            }
+            .circle-frame {
+                width: 80vw; /* More responsive on smaller screens */
+                height: 80vw; /* More responsive on smaller screens */
+            }
+            .circle-buttons a {
+                width: 40px; /* Smaller button size */
+                height: 40px; /* Smaller button size */
+            }
         }
     </style>
 </head>
 <body>
-   
     <div class="container">
         <div class="main-content">
             <div class="left-section">
@@ -69,7 +232,7 @@
             </div>
             <div class="center-section">
                 <div class="circle-frame">
-                    <img src="SF Logo.png" alt="Web Designer" />
+                    <img src="SF Logo.png" alt="Web Designer" style="max-width: 100%; max-height: 100%; border-radius: 50%;" />
                     <div class="circle-buttons">
                         <a href="Firstday.html">Bali Dec 30th 24</a>
                         <a href="Secondday.html">Bali Dec 31th 24</a>
