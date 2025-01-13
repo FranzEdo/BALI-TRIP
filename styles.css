@@ -1,246 +1,254 @@
+/* Reset dan dasar */
+* {
+    box-sizing: border-box;
+}
+
 body {
+    font-family: 'Rubik Vinyl', sans-serif;
     margin: 0;
-    font-family: 'Roboto', sans-serif;
-    background-color: #1a1a1a;
+    padding: 0;
+    background-color: #f8f9fa; /* Warna latar belakang yang lembut */
+}
+
+/* Header */
+header {
+    background: #333;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: linear-gradient(45deg, #1a1a1a, #333);
-    background-size: 400% 400%;
-    animation: gradient 15s ease infinite; /* Animasi latar belakang */
-}
-
-@keyframes gradient {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-.container {
-    width: 100%;
-    max-width: 1200px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    padding: 20px 0;
     text-align: center;
-    position: relative;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-.navbar {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end; /* Align items to the right */
-    padding: 20px 50px;
-    position: absolute;
-    top: 0;
+/* Navigasi */
+nav ul {
+    list-style: none;
+    padding: 0;
 }
 
-.navbar .logo {
-    font-size: 50px;
-    font-weight: bold;
-    margin-right: 10px;
-    cursor: pointer; /* Change cursor to pointer */
+nav ul li {
+    display: inline;
+    margin: 0 15px;
 }
 
-.navbar a {
+nav a {
     color: white;
     text-decoration: none;
-    margin: 0 10px;
-    padding: 10px 10px; /* Add padding for button effect */
-    border-radius: 2px; /* Rounded corners */
-    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effect */
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.navbar a:hover {
-    background-color: rgba(243, 8, 8, 0.874); /* Light background on hover */
-    transform: scale(1.1) rotate(3deg); /* Efek zoom dan rotasi saat hover */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); /* Tambahkan bayangan saat hover */
+/* Gaya untuk tombol navigasi */
+.nav-button {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.main-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    height: 100%;
-    animation: fadeIn 1s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.left-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.left-section h1 {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    font-size: 50px;
-    margin: 0;
-    text-shadow: 2px 2px 8px rgba(255, 255, 255, 0.5); /* Bayangan teks */
-    transition: color 0.3s, transform 0.3s; /* Transisi warna dan transform */
-    animation: fadeIn 1s; /* Animasi masuk */
-}
-
-.left-section p {
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    margin: 0;
-    font-size: 18px;
-    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5); /* Bayangan teks */
-    transition: color 0.3s, transform 0.3s; /* Transisi warna dan transform */
-    animation: fadeIn 1s; /* Animasi masuk */
-}
-
-.left-section h1:hover, .left-section p:hover {
-    color: #ffcc00; /* Ubah warna saat hover */
-    transform: scale(1.05); /* Efek zoom saat hover */
-}
-
-.center-section {
-    flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
-
-.circle-frame {
-    width: 520px; /* Slightly larger than the image */
-    height: 520px; /* Slightly larger than the image */
-    border: 10px solid rgba(255, 255, 255, 0.5); /* White border with transparency */
-    border-radius: 50%; /* Make it circular */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Optional shadow for effect */
-    position: relative; /* Set position relative for absolute positioning of flame */
+/* Efek hover */
+.nav-button:hover {
+    background-color: #0056b3;
     transform: scale(1.1);
-    transition: transform 0.5s ease;
 }
 
-.circle-frame:hover img {
-    animation: spin 1s linear forwards; /* Animasi putar saat hover */
+/* Efek klik */
+.nav-button:active {
+    animation: bounce 0.3s; /* Menambahkan animasi bounce saat tombol ditekan */
 }
 
-@keyframes spin {
-    from {
-        transform: rotate(0deg); /* Mulai dari 0 derajat */
-    }
-    to {
-        transform: rotate(360deg); /* Putar hingga 360 derajat */
-    }
-}
-
-.circle-frame img {
-    border-radius: 50%; /* Ensures the image itself is circular */
-    width: 500px; /* Fixed size for the circular image */
-    height: 500px; /* Fixed size for the circular image */
-    object-fit: cover; /* Ensure it covers the area without stretching */
-}
-
-.right-section {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.right-section .info {
-    text-align: left;
-}
-
-.right-section .info h2 {
-    font-size: 24px;
-    margin: 0;
-}
-
-.right-section .info p {
-    font-size: 14px;
-    margin: 5px 0;
-}
-
-.social-links {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-}
-
-.social-links a {
-    color: rgb(22, 21, 23);
-    margin: 0 10px;
-    font-size: 24px;
-}
-
-.social-links a:hover {
-    animation: bounce 0.5s; /* Tambahkan animasi bounce */
-}
-
+/* Animasi bounce */
 @keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
         transform: translateY(0);
     }
     40% {
-        transform: translateY(-10px);
-    }
-    60% {
         transform: translateY(-5px);
     }
+    60% {
+        transform: translateY(-3px);
+    }
 }
 
-/* Gaya untuk dropdown */
-.dropdown {
-    position: relative; /* Posisi relatif untuk dropdown */
-    display: inline-block; /* Menampilkan inline */
+/* Kontainer */
+.container {
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 800px;
+    background-color: rgb(255, 255, 255); /* Latar belakang putih untuk konten */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.dropdown-content {
-    display: none; /* Tersembunyi secara default */
-    position: absolute; /* Posisi absolut */
-    background-color: #070709; /* Warna latar belakang dropdown */
-    min-width: 160px; /* Lebar minimum dropdown */
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Bayangan untuk dropdown */
-    z-index: 1; /* Mengatur z-index */
+/* Slider */
+.slider {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    width: 100%;
+    height: 300px; /* Tinggi untuk slider disesuaikan dengan gambar */
+    margin-top: 20px; /* Jarak atas */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Menambahkan bayangan untuk efek 3D */
 }
 
-.dropdown-content a {
-    color: white; /* Warna teks */
-    padding: 12px 16px; /* Ruang dalam tautan */
-    text-decoration: none; /* Menghilangkan garis bawah */
-    display: block; /* Membuat tautan blok */
+.slide {
+    display: none; /* Gambar tidak ditampilkan secara default */
+    width: 300px; /* Lebar tetap untuk gambar */
+    height: 300px; /* Tinggi tetap untuk gambar */
+    border-radius: 10px;
+    margin: 0 auto; /* Mengatur gambar agar berada di tengah */
+    object-fit: cover; /* Memastikan gambar terpotong dengan proporsional */
+    border: 5px solid #fff; /* Bingkai putih di sekitar gambar */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan pada gambar */
 }
 
-.dropdown-content a:hover {
-    background-color: #0f0fea; /* Warna saat hover */
+.slide.active {
+    display: block; /* Menampilkan gambar yang aktif */
+}
+/* Tombol Home */
+.home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 
-/* Menampilkan dropdown saat hover */
-.dropdown:hover .dropdown-content {
-    display: block; /* Menampilkan dropdown saat hover */
+.home-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4);
 }
 
-/* Tambahan untuk dropdown ketika diklik */
-.dropdown-toggle:focus + .dropdown-content,
-.dropdown-content:hover {
-    display: block; /* Menampilkan dropdown ketika tombol diklik */
+.home-button:active {
+    transform: scale(0.95);
+}
+
+/* Tombol Detail */
+.detail-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
+.detail-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4);
+}
+.detail-button:active {
+    transform: scale(0.95);
+}
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Gambar besar yang akan ditampilkan saat gambar kecil diklik */
+.large-image {
+    display: none; /* Awalnya tidak ditampilkan */
+    position: fixed; /* Posisi tetap */
+    top: 50%; /* Memposisikan di tengah */
+    left: 50%; /* Memposisikan di tengah */
+    transform: translate(-50%, -50%); /* Memindahkan gambar ke tengah */
+    background-color: rgba(0, 0, 0, 0.8); /* Latar belakang gelap */
+    border-radius: 8px; /* Sudut tumpul untuk gambar besar */
+    z-index: 1000; /* Mendapatkan prioritas di atas konten lain */
+    padding: 20px; /* Jarak di sekitar gambar besar */
+}
+
+.large-image img {
+    width: 100%; /* Lebar maksimum 100% dari kontainer */
+    height: auto; /* Tinggi otomatis agar proporsional */
+    object-fit: contain; /* Memastikan gambar terpotong secara proporsional */
+    border-radius: 8px; /* Sudut tumpul untuk gambar besar */
+}
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer-text {
+    display: inline-block;
+    white-space: nowrap; /* Menjaga teks dalam satu baris */
+    animation: scroll 10s linear infinite; /* Animasi scroll */
+    font-size: 1.5em;
+}
+
+/* Animasi scroll */
+@keyframes scroll {
+    0% {
+        transform: translateX(100%); /* Mulai dari luar kanan */
+    }
+    100% {
+        transform: translateX(-100%); /* Bergerak ke luar kiri */
+    }
+}
+
+/* Efek api */
+.flame-effect {
+    color: #FF4500; /* Warna dasar api */
+    text-shadow: 
+        0 0 5px #FF6347,   /* Warna oranye lebih cerah */
+        0 0 10px #FF6347, 
+        0 0 15px #FF4500, 
+        0 0 20px #FF4500, 
+        0 0 30px #FF0000;   /* Warna merah */
+    animation: flicker 0.5s infinite alternate; /* Animasi berkedip */
+}
+
+/* Animasi flicker */
+@keyframes flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6; /* Menurunkan opasitas untuk efek berkedip */
+    }
+}
+.photos {
+    width: 50%; /* Setengah dari lebar kontainer */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Menyusun gambar secara vertikal */
+    margin: 20px auto; /* Memberikan jarak atas dan bawah serta memusatkan konten */
+}
+
+.photos img {
+    width: 300px; /* Set ukuran lebar gambar */
+    height: 300px; /* Set ukuran tinggi gambar */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    object-fit: cover; /* Memastikan gambar tidak terdistorsi */
+    border: 5px solid #fff; /* Bingkai putih di sekitar gambar */
+    margin-bottom: 15px; /* Jarak antara gambar */
+    transition: transform 0.6s ease; /* Transisi halus untuk animasi */
+}
+
+.photos img:hover {
+    transform: rotate(360deg); /* Rotasi 360 derajat saat hover */
+}
+
+.photo-frame {
+    padding: 10px; /* Jarak antara bingkai dan gambar */
+    border-radius: 15px; /* Radius bingkai */
+    background-color: rgba(255, 255, 255, 0.8); /* Latar belakang bingkai */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Bayangan pada bingkai */
 }
