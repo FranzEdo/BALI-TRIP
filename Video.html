@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Vinyl&display=swap" rel="stylesheet">
     <title>VIDEO FILE</title>
 
     <!-- Slick CSS -->
@@ -12,74 +15,56 @@
     <!-- Our CSS -->
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
-            background: url('SF background.png') no-repeat center center fixed;
-            background-size: cover;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            color: #ffffff;
+            font-family: 'Rubik Vinyl', sans-serif;
+            background: url('') no-repeat center center fixed; /* Ganti dengan path gambar Anda */
+            background-size: cover; /* Pastikan gambar menutupi seluruh area */
+            display: flex; /* Menggunakan flexbox untuk posisi konten */
+            justify-content: center; /* Memusatkan konten secara horizontal */
+            align-items: center; /* Memusatkan konten secara vertikal */
+            height: 100vh; /* Memastikan body mengambil seluruh tinggi viewport */
+            margin: 0; /* Menghapus margin default */
+            color: #ffffff; /* Warna teks default */
         }
 
         .container {
             max-width: 900px;
             padding: 30px;
-            background-color: rgba(15, 15, 16, 0.85);
-            border-radius: 50%;
-            overflow: hidden;
-            height: 520px;
-            width: 520px;
+            background-color: rgba(15, 15, 16, 0.85); /* Transparansi untuk efek overlay */
+            border-radius: 20%; /* Membuat kontainer berbentuk lingkaran */
+            overflow: hidden; /* Memastikan konten tidak melampaui batas lingkaran */
+            height: 400px; /* Tinggi kontainer */
+            width: 400px; /* Lebar kontainer */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
-            position: relative; /* Tambahkan posisi relatif untuk tombol */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Efek bayangan */
         }
+        .home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+}
 
+.home-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(0, 123, 255, 0.4);
+}
+
+.home-button:active {
+    transform: scale(0.95);
+}
         h1, p {
             text-align: center;
         }
 
-        .circle-buttons {
-            position: absolute; /* Posisi tombol */
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .circle-buttons a {
-            position: absolute; /* Posisi untuk setiap tombol */
-            width: 50px; /* Lebar tombol */
-            height: 50px; /* Tinggi tombol */
-            background-color: rgba(243, 8, 8, 0.874); /* Warna latar belakang tombol */
-            color: white; /* Warna teks tombol */
-            border-radius: 50%; /* Bentuk bulat */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none; /* Menghilangkan garis bawah */
-            transition: transform 0.3s; /* Transisi untuk efek hover */
-        }
-
-        /* Mengatur posisi tombol dalam lingkaran */
-        .circle-buttons a:nth-child(1) { transform: translate(0, -260px); }
-        .circle-buttons a:nth-child(2) { transform: translate(184px, -184px); }
-        .circle-buttons a:nth-child(3) { transform: translate(260px, 0); }
-        .circle-buttons a:nth-child(4) { transform: translate(184px, 184px); }
-        .circle-buttons a:nth-child(5) { transform: translate(0, 260px); }
-        .circle-buttons a:nth-child(6) { transform: translate(-184px, 184px); }
-        .circle-buttons a:nth-child(7) { transform: translate(-260px, 0); }
-        .circle-buttons a:nth-child(8) { transform: translate(-184px, -184px); }
-
-        .circle-buttons a:hover {
-            transform: scale(1.1); /* Efek zoom saat hover */
-        }
-
+       
         .slider {
             width: 90%;
             height: 200px;
@@ -146,10 +131,10 @@
 </head>
 <body>
     <div class="container">
+        <a href="index.html" class="home-button">Home</a>
         <h1>Kumpulan Video TRIP</h1>
         <p>BALI-BROMO-JOGJA</p>
         <div class="circle-buttons">
-            <a href="index.html">HOME</a>
         </div>
         <div class="slider">
             <div>
